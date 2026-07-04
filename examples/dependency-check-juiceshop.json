@@ -1,0 +1,3575 @@
+{
+  "reportSchema": "1.1",
+  "projectInfo": {
+    "name": "juice-shop",
+    "reportDate": "2026-07-04T16:46:10.590263503Z",
+    "credits": {
+      "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
+      "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "NPM": "This report may contain data retrieved from the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
+      "RETIREJS": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
+      "OSSINDEX": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
+    }
+  },
+  "dependencies": [
+    {
+      "isVirtual": false,
+      "fileName": "bench.js",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/node_modules/fast.js/dist/bench.js",
+      "md5": "6af488defde3d81bad97d52146d0bfe7",
+      "sha1": "ae9a60339937cfa9b108228a343565a977759fdd",
+      "sha256": "3e84b96943e4ee17c96f015aa4834986c9a0277f23338f44714f607f75b067c5",
+      "packages": [
+        {
+          "id": "pkg:javascript/underscore.js@1.7.0",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2026-27601",
+          "severity": "HIGH",
+          "cvssv3": {
+            "baseScore": 5.9,
+            "attackVector": "NETWORK",
+            "attackComplexity": "HIGH",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.2",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cvssv4": {
+            "vectorString": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+            "source": "security-advisories@github.com",
+            "type": "Secondary",
+            "version": "4.0",
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "attackRequirements": "PRESENT",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "vulnerableSystemConfidentiality": "NONE",
+            "vulnerableSystemIntegrity": "NONE",
+            "vulnerableSystemAvailability": "HIGH",
+            "subsequentSystemConfidentiality": "NONE",
+            "subsequentSystemIntegrity": "NONE",
+            "subsequentSystemAvailability": "NONE",
+            "exploitMaturity": "NOT_DEFINED",
+            "confidentialityRequirements": "NOT_DEFINED",
+            "integrityRequirements": "NOT_DEFINED",
+            "availabilityRequirements": "NOT_DEFINED",
+            "modifiedAttackVector": "NOT_DEFINED",
+            "modifiedAttackComplexity": "NOT_DEFINED",
+            "modifiedAttackRequirements": "NOT_DEFINED",
+            "modifiedPrivilegesRequired": "NOT_DEFINED",
+            "modifiedUserInteraction": "NOT_DEFINED",
+            "modifiedVulnerableSystemConfidentiality": "NOT_DEFINED",
+            "modifiedVulnerableSystemIntegrity": "NOT_DEFINED",
+            "modifiedVulnerableSystemAvailability": "NOT_DEFINED",
+            "modifiedSubsequentSystemConfidentiality": "NOT_DEFINED",
+            "modifiedSubsequentSystemIntegrity": "NOT_DEFINED",
+            "modifiedSubsequentSystemAvailability": "NOT_DEFINED",
+            "safety": "NOT_DEFINED",
+            "automatable": "NOT_DEFINED",
+            "recovery": "NOT_DEFINED",
+            "valueDensity": "NOT_DEFINED",
+            "vulnerabilityResponseEffort": "NOT_DEFINED",
+            "providerUrgency": "NOT_DEFINED",
+            "baseScore": 8.2,
+            "baseSeverity": "HIGH"
+          },
+          "cwes": [
+            "CWE-770"
+          ],
+          "description": "Underscore.js is a utility-belt library for JavaScript. Prior to 1.13.8, the _.flatten and _.isEqual functions use recursion without a depth limit. Under very specific conditions, detailed below, an attacker could exploit this in a Denial of Service (DoS) attack by triggering a stack overflow. Untrusted input must be used to create a recursive datastructure, for example using JSON.parse, with no enforced depth limit. The datastructure thus created must be passed to _.flatten or _.isEqual. In the case of _.flatten, the vulnerability can only be exploited if it is possible for a remote client to prepare a datastructure that consists of arrays at all levels AND if no finite depth limit is passed as the second argument to _.flatten. In the case of _.isEqual, the vulnerability can only be exploited if there exists a code path in which two distinct datastructures that were submitted by the same remote client are compared using _.isEqual. For example, if a client submits data that are stored in a database, and the same client can later submit another datastructure that is then compared to the data that were saved in the database previously, OR if a client submits a single request, but its data are parsed twice, creating two non-identical but equivalent datastructures that are then compared. Exceptions originating from the call to _.flatten or _.isEqual, as a result of a stack overflow, are not being caught. This vulnerability is fixed in 1.13.8.",
+          "notes": "",
+          "references": [
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/jashkenas/underscore/commit/411e222eb0ca5d570cc4f6315c02c05b830ed2b4",
+              "name": "PATCH"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/jashkenas/underscore/security/advisories/GHSA-qpx9-hpmf-5gmw",
+              "name": "EXPLOIT,PATCH,VENDOR_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://underscorejs.org/#1.13.8",
+              "name": "https://underscorejs.org/#1.13.8"
+            },
+            {
+              "source": "info",
+              "url": "https://underscorejs.org/#isEqual",
+              "name": "https://underscorejs.org/#isEqual"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/jashkenas/underscore/security/advisories/GHSA-qpx9-hpmf-5gmw",
+              "name": "https://github.com/jashkenas/underscore/security/advisories/GHSA-qpx9-hpmf-5gmw"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/jashkenas/underscore/commit/a6e23ae9647461ec33ad9f92a2ecfc220eea0a84",
+              "name": "PATCH"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/jashkenas/underscore/issues/3011",
+              "name": "https://github.com/jashkenas/underscore/issues/3011"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/jashkenas/underscore/commit/411e222eb0ca5d570cc4f6315c02c05b830ed2b4",
+              "name": "https://github.com/jashkenas/underscore/commit/411e222eb0ca5d570cc4f6315c02c05b830ed2b4"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/jashkenas/underscore/commit/a6e23ae9647461ec33ad9f92a2ecfc220eea0a84",
+              "name": "https://github.com/jashkenas/underscore/commit/a6e23ae9647461ec33ad9f92a2ecfc220eea0a84"
+            },
+            {
+              "source": "info",
+              "url": "https://underscorejs.org/#flatten",
+              "name": "https://underscorejs.org/#flatten"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2021-23358",
+          "severity": "HIGH",
+          "cvssv2": {
+            "score": 6.5,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "SINGLE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.0",
+            "impactScore": "6.4"
+          },
+          "cvssv3": {
+            "baseScore": 7.2,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "HIGH",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "1.2",
+            "impactScore": "5.9",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-94"
+          ],
+          "description": "The package underscore from 1.13.0-0 and before 1.13.0-2, from 1.3.2 and before 1.12.1 are vulnerable to Arbitrary Code Injection via the template function, particularly when a variable property is passed as an argument as it is not sanitized.",
+          "notes": "",
+          "references": [
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1081504",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1081503",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.tenable.com/security/tns-2021-14",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1081503",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1081504",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://github.com/jashkenas/underscore/blob/master/modules/template.js%23L71",
+              "name": "BROKEN_LINK"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/jashkenas/underscore/blob/master/modules/template.js%23L71",
+              "name": "BROKEN_LINK"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.debian.org/security/2021/dsa-4883",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBJASHKENAS-1081505",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://lists.apache.org/thread.html/rbc84926bacd377503a3f5c37b923c1931f9d343754488d94e6f08039%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EOKATXXETD2PF3OR36Q5PD2VSVAR6J5Z/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "http://seclists.org/fulldisclosure/2025/Apr/14"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://lists.apache.org/thread.html/r5df90c46f7000c4aab246e947f62361ecfb849c5a553dcdb0ef545e1%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://lists.apache.org/thread.html/raae088abdfa4fbd84e1d19d7a7ffe52bf8e426b83e6599ea9a734dba%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBJASHKENAS-1081505",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EOKATXXETD2PF3OR36Q5PD2VSVAR6J5Z/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20240808-0003/"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FGEE7U4Z655A2MK5EW4UQQZ7B64XJWBV/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20241108-0002/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/FGEE7U4Z655A2MK5EW4UQQZ7B64XJWBV/"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.tenable.com/security/tns-2021-14",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/raae088abdfa4fbd84e1d19d7a7ffe52bf8e426b83e6599ea9a734dba%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://lists.debian.org/debian-lts-announce/2021/03/msg00038.html",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/r5df90c46f7000c4aab246e947f62361ecfb849c5a553dcdb0ef545e1%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23358",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2021-23358"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.debian.org/security/2021/dsa-4883",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/r770f910653772317b117ab4472b0a32c266ee4abbafda28b8a6f9306%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-UNDERSCORE-1080984",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/rbc84926bacd377503a3f5c37b923c1931f9d343754488d94e6f08039%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.debian.org/debian-lts-announce/2021/03/msg00038.html",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://lists.apache.org/thread.html/re69ee408b3983b43e9c4a82a9a17cbbf8681bb91a4b61b46f365aeaf%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/re69ee408b3983b43e9c4a82a9a17cbbf8681bb91a4b61b46f365aeaf%40%3Cissues.cordova.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-UNDERSCORE-1080984",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://lists.apache.org/thread.html/r770f910653772317b117ab4472b0a32c266ee4abbafda28b8a6f9306%40%3Cissues.cordova.apache.org%3E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": true,
+      "fileName": "express-jwt:0.1.3",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/package.json?/express-jwt:0.1.3",
+      "description": "JWT authentication middleware.",
+      "projectReferences": [
+        "juice-shop:20.1.1"
+      ],
+      "packages": [
+        {
+          "id": "pkg:npm/express-jwt@0.1.3",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2020-15084",
+          "severity": "CRITICAL",
+          "cvssv2": {
+            "score": 4.3,
+            "accessVector": "NETWORK",
+            "accessComplexity": "MEDIUM",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "NONE",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.6",
+            "impactScore": "2.9"
+          },
+          "cvssv3": {
+            "baseScore": 9.1,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "CRITICAL",
+            "exploitabilityScore": "3.9",
+            "impactScore": "5.2",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-863",
+            "CWE-285"
+          ],
+          "description": "In express-jwt (NPM package) up and including version 5.3.3, the algorithms entry to be specified in the configuration is not being enforced. When algorithms is not specified in the configuration, with the combination of jwks-rsa, it may lead to authorization bypass. You are affected by this vulnerability if all of the following conditions apply: - You are using express-jwt - You do not have **algorithms** configured in your express-jwt configuration. - You are using libraries such as jwks-rsa as the **secret**. You can fix this by specifying **algorithms** in the express-jwt configuration. See linked GHSA for example. This is also fixed in version 6.0.0.",
+          "notes": "",
+          "references": [
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/express-jwt/security/advisories/GHSA-6g6m-m6h5-w9gf",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/express-jwt/security/advisories/GHSA-6g6m-m6h5-w9gf",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/express-jwt/commit/7ecab5f8f0cab5297c2b863596566eb0c019cdef",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/express-jwt/commit/7ecab5f8f0cab5297c2b863596566eb0c019cdef",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": true,
+      "fileName": "file-type:16.5.4",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/package.json?/file-type:^16.5.4",
+      "description": "Detect the file type of a Buffer/Uint8Array/ArrayBuffer",
+      "license": "MIT",
+      "projectReferences": [
+        "juice-shop:20.1.1"
+      ],
+      "packages": [
+        {
+          "id": "pkg:npm/file-type@16.5.4",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2026-31808",
+          "severity": "MEDIUM",
+          "cvssv3": {
+            "baseScore": 5.3,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "LOW",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "3.9",
+            "impactScore": "1.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-835"
+          ],
+          "description": "file-type detects the file type of a file, stream, or data. Prior to 21.3.1, a denial of service vulnerability exists in the ASF (WMV/WMA) file type detection parser. When parsing a crafted input where an ASF sub-header has a size field of zero, the parser enters an infinite loop. The payload value becomes negative (-24), causing tokenizer.ignore(payload) to move the read position backwards, so the same sub-header is read repeatedly forever. Any application that uses file-type to detect the type of untrusted/attacker-controlled input is affected. An attacker can stall the Node.js event loop with a 55-byte payload. Fixed in version 21.3.1.",
+          "notes": "",
+          "references": [
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/sindresorhus/file-type/commit/319abf871b50ba2fa221b4a7050059f1ae096f4f",
+              "name": "PATCH"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/sindresorhus/file-type/security/advisories/GHSA-5v7r-6r5c-r473",
+              "name": "MITIGATION,PATCH,VENDOR_ADVISORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": true,
+      "fileName": "js-yaml:3.15.0",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/package.json?/js-yaml:^3.14.0",
+      "description": "YAML 1.2 parser and serializer",
+      "license": "MIT",
+      "projectReferences": [
+        "juice-shop:20.1.1"
+      ],
+      "packages": [
+        {
+          "id": "pkg:npm/js-yaml@3.15.0",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2026-53550",
+          "severity": "MEDIUM",
+          "cvssv3": {
+            "baseScore": 5.3,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "LOW",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "3.9",
+            "impactScore": "1.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-407"
+          ],
+          "description": "js-yaml is a JavaScript YAML parser and dumper. Prior to 4.2.0 and 3.15.0, a crafted YAML document can trigger algorithmic CPU exhaustion in js-yaml merge-key processing (<<) by repeating the same alias many times in a merge sequence. This causes quadratic parse-time behavior relative to input size and can block a Node.js worker/event loop for seconds with a relatively small payload (tens of KB), resulting in denial of service. The issue is in merge handling inside lib/loader.js. This vulnerability is fixed in 4.2.0 and 3.15.0.",
+          "notes": "",
+          "references": [
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/nodeca/js-yaml/security/advisories/GHSA-h67p-54hq-rp68",
+              "name": "EXPLOIT,MITIGATION,VENDOR_ADVISORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": true,
+      "fileName": "jsonwebtoken:0.4.0",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/package.json?/jsonwebtoken:0.4.0",
+      "description": "JSON Web Token implementation (symmetric and asymmetric)",
+      "license": "MIT",
+      "projectReferences": [
+        "juice-shop:20.1.1"
+      ],
+      "packages": [
+        {
+          "id": "pkg:npm/jsonwebtoken@0.4.0",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2015-9235",
+          "severity": "CRITICAL",
+          "cvssv2": {
+            "score": 7.5,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "HIGH",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "6.4"
+          },
+          "cvssv3": {
+            "baseScore": 9.8,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "CRITICAL",
+            "exploitabilityScore": "3.9",
+            "impactScore": "5.9",
+            "version": "3.0"
+          },
+          "cwes": [
+            "CWE-20",
+            "CWE-327"
+          ],
+          "description": "In jsonwebtoken node module before 4.2.2 it is possible for an attacker to bypass verification when a token digitally signed with an asymmetric key (RS/ES family) of algorithms but instead the attacker send a token digitally signed with a symmetric algorithm (HS* family).",
+          "notes": "",
+          "references": [
+            {
+              "source": "support@hackerone.com",
+              "url": "https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/",
+              "name": "BROKEN_LINK,VENDOR_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://github.com/auth0/node-jsonwebtoken/commit/1bb584bc382295eeb7ee8c4452a673a77a68b687",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.timmclean.net/2015/02/25/jwt-alg-none.html",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://nodesecurity.io/advisories/17",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://nodesecurity.io/advisories/17",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://www.timmclean.net/2015/02/25/jwt-alg-none.html",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://auth0.com/blog/2015/03/31/critical-vulnerabilities-in-json-web-token-libraries/",
+              "name": "BROKEN_LINK,VENDOR_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/node-jsonwebtoken/commit/1bb584bc382295eeb7ee8c4452a673a77a68b687",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2022-23539",
+          "severity": "HIGH",
+          "cvssv3": {
+            "baseScore": 8.1,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "2.8",
+            "impactScore": "5.2",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-327"
+          ],
+          "description": "Versions `<=8.5.1` of `jsonwebtoken` library could be misconfigured so that legacy, insecure key types are used for signature verification. For example, DSA keys could be used with the RS256 algorithm. You are affected if you are using an algorithm and a key type other than a combination listed in the GitHub Security Advisory as unaffected. This issue has been fixed, please update to version 9.0.0. This version validates for asymmetric key type and algorithm combinations. Please refer to the above mentioned algorithm / key type combinations for the valid secure configuration. After updating to version 9.0.0, if you still intend to continue with signing or verifying tokens using invalid key type/algorithm value combinations, you\u2019ll need to set the `allowInvalidAsymmetricKeyTypes` option  to `true` in the `sign()` and/or `verify()` functions.",
+          "notes": "",
+          "references": [
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-8cf7-32gw-wr33",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://security.netapp.com/advisory/ntap-20240621-0007/"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/node-jsonwebtoken/commit/e1fa9dcc12054a8681db4e6373da1b30cf7016e3",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-8cf7-32gw-wr33",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/node-jsonwebtoken/commit/e1fa9dcc12054a8681db4e6373da1b30cf7016e3",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20240621-0007/"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2022-23540",
+          "severity": "HIGH",
+          "cvssv3": {
+            "baseScore": 7.6,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "LOW",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "2.8",
+            "impactScore": "4.7",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-347",
+            "CWE-287"
+          ],
+          "description": "In versions `<=8.5.1` of `jsonwebtoken` library, lack of algorithm definition in the `jwt.verify()` function can lead to signature validation bypass due to defaulting to the `none` algorithm for signature verification. Users are affected if you do not specify algorithms in the `jwt.verify()` function. This issue has been fixed, please update to version 9.0.0 which removes the default support for the none algorithm in the `jwt.verify()` method. There will be no impact, if you update to version 9.0.0 and you don\u2019t need to allow for the `none` algorithm. If you need 'none' algorithm, you have to explicitly specify that in `jwt.verify()` options.",
+          "notes": "",
+          "references": [
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://security.netapp.com/advisory/ntap-20240621-0007/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-qwph-4952-7xr6",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20240621-0007/"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-qwph-4952-7xr6",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/node-jsonwebtoken/commit/e1fa9dcc12054a8681db4e6373da1b30cf7016e3",
+              "name": "PATCH"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/node-jsonwebtoken/commit/e1fa9dcc12054a8681db4e6373da1b30cf7016e3",
+              "name": "PATCH"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2022-23541",
+          "severity": "MEDIUM",
+          "cvssv3": {
+            "baseScore": 6.3,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "LOW",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.8",
+            "impactScore": "3.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "NVD-CWE-Other",
+            "CWE-287",
+            "CWE-1259"
+          ],
+          "description": "jsonwebtoken is an implementation of JSON Web Tokens. Versions `<= 8.5.1` of `jsonwebtoken` library can be misconfigured so that passing a poorly implemented key retrieval function referring to the `secretOrPublicKey` argument from the readme link will result in incorrect verification of tokens. There is a possibility of using a different algorithm and key combination in verification, other than the one that was used to sign the tokens. Specifically, tokens signed with an asymmetric public key could be verified with a symmetric HS256 algorithm. This can lead to successful validation of  forged tokens. If your application is supporting usage of both symmetric key and asymmetric key in jwt.verify() implementation with the same key retrieval function. This issue has been patched, please update to version 9.0.0.",
+          "notes": "",
+          "references": [
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/node-jsonwebtoken/releases/tag/v9.0.0",
+              "name": "RELEASE_NOTES"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-hjrf-2m68-5959",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://security.netapp.com/advisory/ntap-20240621-0007/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/node-jsonwebtoken/security/advisories/GHSA-hjrf-2m68-5959",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/node-jsonwebtoken/releases/tag/v9.0.0",
+              "name": "RELEASE_NOTES"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20240621-0007/"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/auth0/node-jsonwebtoken/commit/e1fa9dcc12054a8681db4e6373da1b30cf7016e3",
+              "name": "PATCH"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/auth0/node-jsonwebtoken/commit/e1fa9dcc12054a8681db4e6373da1b30cf7016e3",
+              "name": "PATCH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": false,
+      "fileName": "lodash.js",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/node_modules/sanitize-html/node_modules/lodash/dist/lodash.js",
+      "md5": "fe02da36c6a43edfd7d8fae2945e2080",
+      "sha1": "1996aca565068a71066e2af03101a073f0cf12b6",
+      "sha256": "dc82877fec267f8edc9a20c63870d0f5660d88aed921f75f8f06006a4a0ae022",
+      "packages": [
+        {
+          "id": "pkg:javascript/lodash@2.4.2",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2019-10744",
+          "severity": "CRITICAL",
+          "cvssv2": {
+            "score": 6.4,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "4.9"
+          },
+          "cvssv3": {
+            "baseScore": 9.1,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "CRITICAL",
+            "exploitabilityScore": "3.9",
+            "impactScore": "5.2",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321"
+          ],
+          "description": "Versions of lodash lower than 4.17.12 are vulnerable to Prototype Pollution. The function defaultsDeep could be tricked into adding or modifying properties of Object.prototype using a constructor payload.",
+          "notes": "",
+          "references": [
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "https://security.netapp.com/advisory/ntap-20191004-0005/"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "https://www.oracle.com/security-alerts/cpujan2021.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "https://access.redhat.com/errata/RHSA-2019:3024"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "https://snyk.io/vuln/SNYK-JS-LODASH-450202"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-10744",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2019-10744"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS",
+              "name": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+              "name": "https://github.com/advisories/GHSA-jf85-cpcp-j695"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/1065",
+              "name": "https://www.npmjs.com/advisories/1065"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "https://www.oracle.com/security-alerts/cpuoct2020.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/pull/4336",
+              "name": "https://github.com/lodash/lodash/pull/4336"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp%3Butm_medium=RSS",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp%3Butm_medium=RSS",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2021-23337",
+          "severity": "HIGH",
+          "cvssv2": {
+            "score": 6.5,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "SINGLE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.0",
+            "impactScore": "6.4"
+          },
+          "cvssv3": {
+            "baseScore": 7.2,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "HIGH",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "1.2",
+            "impactScore": "5.9",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-94"
+          ],
+          "description": "Lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+          "notes": "",
+          "references": [
+            {
+              "source": "info",
+              "name": "https://www.oracle.com//security-alerts/cpujul2021.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash",
+              "name": "https://github.com/lodash/lodash"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "BROKEN_LINK"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+              "name": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com//security-alerts/cpujul2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "https://security.netapp.com/advisory/ntap-20210312-0006/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com//security-alerts/cpujul2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c",
+              "name": "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "https://www.oracle.com/security-alerts/cpujan2022.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "https://www.oracle.com/security-alerts/cpujul2022.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "https://www.oracle.com/security-alerts/cpuoct2021.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "BROKEN_LINK"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851",
+              "name": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2018-3721",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 4.0,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "SINGLE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "NONE",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.0",
+            "impactScore": "2.9"
+          },
+          "cvssv3": {
+            "baseScore": 6.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.8",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321",
+            "CWE-471"
+          ],
+          "description": "lodash node module before 4.17.5 suffers from a Modification of Assumed-Immutable Data (MAID) vulnerability via defaultsDeep, merge, and mergeWith functions, which allows a malicious user to modify the prototype of \"Object\" via __proto__, causing the addition or modification of an existing property that will exist on all objects.",
+          "notes": "",
+          "references": [
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "PATCH"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/577",
+              "name": "https://www.npmjs.com/advisories/577"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-fvqr-27wr-82fm",
+              "name": "https://github.com/advisories/GHSA-fvqr-27wr-82fm"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-3721",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2018-3721"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a"
+            },
+            {
+              "source": "info",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "https://hackerone.com/reports/310443"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "https://security.netapp.com/advisory/ntap-20190919-0004/"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "PATCH"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2018-16487",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 6.8,
+            "accessVector": "NETWORK",
+            "accessComplexity": "MEDIUM",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.6",
+            "impactScore": "6.4"
+          },
+          "cvssv3": {
+            "baseScore": 5.6,
+            "attackVector": "NETWORK",
+            "attackComplexity": "HIGH",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "LOW",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.2",
+            "impactScore": "3.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-400",
+            "NVD-CWE-noinfo"
+          ],
+          "description": "A prototype pollution vulnerability was found in lodash <4.17.11 where the functions merge, mergeWith, and defaultsDeep can be tricked into adding or modifying properties of Object.prototype.",
+          "notes": "",
+          "references": [
+            {
+              "source": "info",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "https://hackerone.com/reports/380873"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-4xc9-xhrj-v574",
+              "name": "https://github.com/advisories/GHSA-4xc9-xhrj-v574"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/782",
+              "name": "https://www.npmjs.com/advisories/782"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-16487",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2018-16487"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "https://security.netapp.com/advisory/ntap-20190919-0004/"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad",
+              "name": "https://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2026-2950",
+          "severity": "MEDIUM",
+          "cvssv3": {
+            "baseScore": 5.3,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "3.9",
+            "impactScore": "1.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321"
+          ],
+          "description": "Impact:\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the _.unset and _.omit functions. The fix for (CVE-2025-13465: https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as Object.prototype, Number.prototype, and String.prototype.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\nPatches:\n\nThis issue is patched in 4.18.0.\n\nWorkarounds:\n\nNone. Upgrade to the patched version.",
+          "notes": "",
+          "references": [
+            {
+              "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg",
+              "name": "VENDOR_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh",
+              "name": "https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg",
+              "name": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": false,
+      "fileName": "lodash.js",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/node_modules/sanitize-html/node_modules/lodash/lodash.js",
+      "md5": "ea3013cfb89699ef71be5dae72341f2c",
+      "sha1": "16c0086b96a8445c20936b8053d7b8f62638af76",
+      "sha256": "df565a14d7130f9867e31e1d598082d4cdddf41d7697cb300f82e62bbcef14ab",
+      "packages": [
+        {
+          "id": "pkg:javascript/lodash@2.4.2",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2019-10744",
+          "severity": "CRITICAL",
+          "cvssv2": {
+            "score": 6.4,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "4.9"
+          },
+          "cvssv3": {
+            "baseScore": 9.1,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "CRITICAL",
+            "exploitabilityScore": "3.9",
+            "impactScore": "5.2",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321"
+          ],
+          "description": "Versions of lodash lower than 4.17.12 are vulnerable to Prototype Pollution. The function defaultsDeep could be tricked into adding or modifying properties of Object.prototype using a constructor payload.",
+          "notes": "",
+          "references": [
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "https://security.netapp.com/advisory/ntap-20191004-0005/"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "https://www.oracle.com/security-alerts/cpujan2021.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "https://access.redhat.com/errata/RHSA-2019:3024"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "https://snyk.io/vuln/SNYK-JS-LODASH-450202"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-10744",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2019-10744"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS",
+              "name": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+              "name": "https://github.com/advisories/GHSA-jf85-cpcp-j695"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/1065",
+              "name": "https://www.npmjs.com/advisories/1065"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "https://www.oracle.com/security-alerts/cpuoct2020.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/pull/4336",
+              "name": "https://github.com/lodash/lodash/pull/4336"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp%3Butm_medium=RSS",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp%3Butm_medium=RSS",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2021-23337",
+          "severity": "HIGH",
+          "cvssv2": {
+            "score": 6.5,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "SINGLE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.0",
+            "impactScore": "6.4"
+          },
+          "cvssv3": {
+            "baseScore": 7.2,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "HIGH",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "1.2",
+            "impactScore": "5.9",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-94"
+          ],
+          "description": "Lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+          "notes": "",
+          "references": [
+            {
+              "source": "info",
+              "name": "https://www.oracle.com//security-alerts/cpujul2021.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash",
+              "name": "https://github.com/lodash/lodash"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "BROKEN_LINK"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+              "name": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com//security-alerts/cpujul2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "https://security.netapp.com/advisory/ntap-20210312-0006/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com//security-alerts/cpujul2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c",
+              "name": "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "https://www.oracle.com/security-alerts/cpujan2022.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "https://www.oracle.com/security-alerts/cpujul2022.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "https://www.oracle.com/security-alerts/cpuoct2021.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "BROKEN_LINK"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851",
+              "name": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2018-3721",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 4.0,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "SINGLE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "NONE",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.0",
+            "impactScore": "2.9"
+          },
+          "cvssv3": {
+            "baseScore": 6.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.8",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321",
+            "CWE-471"
+          ],
+          "description": "lodash node module before 4.17.5 suffers from a Modification of Assumed-Immutable Data (MAID) vulnerability via defaultsDeep, merge, and mergeWith functions, which allows a malicious user to modify the prototype of \"Object\" via __proto__, causing the addition or modification of an existing property that will exist on all objects.",
+          "notes": "",
+          "references": [
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "PATCH"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/577",
+              "name": "https://www.npmjs.com/advisories/577"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-fvqr-27wr-82fm",
+              "name": "https://github.com/advisories/GHSA-fvqr-27wr-82fm"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-3721",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2018-3721"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a"
+            },
+            {
+              "source": "info",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "https://hackerone.com/reports/310443"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "https://security.netapp.com/advisory/ntap-20190919-0004/"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "PATCH"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2018-16487",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 6.8,
+            "accessVector": "NETWORK",
+            "accessComplexity": "MEDIUM",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.6",
+            "impactScore": "6.4"
+          },
+          "cvssv3": {
+            "baseScore": 5.6,
+            "attackVector": "NETWORK",
+            "attackComplexity": "HIGH",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "LOW",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.2",
+            "impactScore": "3.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-400",
+            "NVD-CWE-noinfo"
+          ],
+          "description": "A prototype pollution vulnerability was found in lodash <4.17.11 where the functions merge, mergeWith, and defaultsDeep can be tricked into adding or modifying properties of Object.prototype.",
+          "notes": "",
+          "references": [
+            {
+              "source": "info",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "https://hackerone.com/reports/380873"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-4xc9-xhrj-v574",
+              "name": "https://github.com/advisories/GHSA-4xc9-xhrj-v574"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/782",
+              "name": "https://www.npmjs.com/advisories/782"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-16487",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2018-16487"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "https://security.netapp.com/advisory/ntap-20190919-0004/"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad",
+              "name": "https://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2026-2950",
+          "severity": "MEDIUM",
+          "cvssv3": {
+            "baseScore": 5.3,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "3.9",
+            "impactScore": "1.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321"
+          ],
+          "description": "Impact:\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the _.unset and _.omit functions. The fix for (CVE-2025-13465: https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as Object.prototype, Number.prototype, and String.prototype.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\nPatches:\n\nThis issue is patched in 4.18.0.\n\nWorkarounds:\n\nNone. Upgrade to the patched version.",
+          "notes": "",
+          "references": [
+            {
+              "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg",
+              "name": "VENDOR_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh",
+              "name": "https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg",
+              "name": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": false,
+      "fileName": "lodash.min.js",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/node_modules/sanitize-html/node_modules/lodash/dist/lodash.min.js",
+      "md5": "06f73bae52f76c868fa98f50f701f55f",
+      "sha1": "8d11f71e6c10af1baa47f42b06c229b372367985",
+      "sha256": "9c070c2008d0acff62203fcd6db804e3baf559032eb7b5fe715242b0de3f52f0",
+      "packages": [
+        {
+          "id": "pkg:javascript/lodash@2.4.2",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2019-10744",
+          "severity": "CRITICAL",
+          "cvssv2": {
+            "score": 6.4,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "4.9"
+          },
+          "cvssv3": {
+            "baseScore": 9.1,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "CRITICAL",
+            "exploitabilityScore": "3.9",
+            "impactScore": "5.2",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321"
+          ],
+          "description": "Versions of lodash lower than 4.17.12 are vulnerable to Prototype Pollution. The function defaultsDeep could be tricked into adding or modifying properties of Object.prototype using a constructor payload.",
+          "notes": "",
+          "references": [
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "https://security.netapp.com/advisory/ntap-20191004-0005/"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "https://www.oracle.com/security-alerts/cpujan2021.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "https://access.redhat.com/errata/RHSA-2019:3024"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "https://snyk.io/vuln/SNYK-JS-LODASH-450202"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-10744",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2019-10744"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://security.netapp.com/advisory/ntap-20191004-0005/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS",
+              "name": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-jf85-cpcp-j695",
+              "name": "https://github.com/advisories/GHSA-jf85-cpcp-j695"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/1065",
+              "name": "https://www.npmjs.com/advisories/1065"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "https://www.oracle.com/security-alerts/cpuoct2020.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://access.redhat.com/errata/RHSA-2019:3024",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-450202",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/pull/4336",
+              "name": "https://github.com/lodash/lodash/pull/4336"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp%3Butm_medium=RSS",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujan2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp%3Butm_medium=RSS",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2020.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2021-23337",
+          "severity": "HIGH",
+          "cvssv2": {
+            "score": 6.5,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "SINGLE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.0",
+            "impactScore": "6.4"
+          },
+          "cvssv3": {
+            "baseScore": 7.2,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "HIGH",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "1.2",
+            "impactScore": "5.9",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-94"
+          ],
+          "description": "Lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+          "notes": "",
+          "references": [
+            {
+              "source": "info",
+              "name": "https://www.oracle.com//security-alerts/cpujul2021.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash",
+              "name": "https://github.com/lodash/lodash"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "BROKEN_LINK"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
+              "name": "https://github.com/advisories/GHSA-35jh-r3h4-6jhm"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com//security-alerts/cpujul2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "https://security.netapp.com/advisory/ntap-20210312-0006/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com//security-alerts/cpujul2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c",
+              "name": "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "https://www.oracle.com/security-alerts/cpujan2022.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujan2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "https://www.oracle.com/security-alerts/cpujul2022.html"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpujul2022.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20210312-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "https://www.oracle.com/security-alerts/cpuoct2021.html"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-LODASH-1040724",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.oracle.com/security-alerts/cpuoct2021.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851",
+              "name": "BROKEN_LINK"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851",
+              "name": "https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930"
+            },
+            {
+              "source": "info",
+              "url": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931",
+              "name": "https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2018-3721",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 4.0,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "SINGLE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "NONE",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.0",
+            "impactScore": "2.9"
+          },
+          "cvssv3": {
+            "baseScore": 6.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.8",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321",
+            "CWE-471"
+          ],
+          "description": "lodash node module before 4.17.5 suffers from a Modification of Assumed-Immutable Data (MAID) vulnerability via defaultsDeep, merge, and mergeWith functions, which allows a malicious user to modify the prototype of \"Object\" via __proto__, causing the addition or modification of an existing property that will exist on all objects.",
+          "notes": "",
+          "references": [
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "PATCH"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/577",
+              "name": "https://www.npmjs.com/advisories/577"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-fvqr-27wr-82fm",
+              "name": "https://github.com/advisories/GHSA-fvqr-27wr-82fm"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-3721",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2018-3721"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a"
+            },
+            {
+              "source": "info",
+              "url": "https://hackerone.com/reports/310443",
+              "name": "https://hackerone.com/reports/310443"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "https://security.netapp.com/advisory/ntap-20190919-0004/"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a",
+              "name": "PATCH"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2018-16487",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 6.8,
+            "accessVector": "NETWORK",
+            "accessComplexity": "MEDIUM",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "8.6",
+            "impactScore": "6.4"
+          },
+          "cvssv3": {
+            "baseScore": 5.6,
+            "attackVector": "NETWORK",
+            "attackComplexity": "HIGH",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "LOW",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.2",
+            "impactScore": "3.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-400",
+            "NVD-CWE-noinfo"
+          ],
+          "description": "A prototype pollution vulnerability was found in lodash <4.17.11 where the functions merge, mergeWith, and defaultsDeep can be tricked into adding or modifying properties of Object.prototype.",
+          "notes": "",
+          "references": [
+            {
+              "source": "info",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "https://hackerone.com/reports/380873"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/advisories/GHSA-4xc9-xhrj-v574",
+              "name": "https://github.com/advisories/GHSA-4xc9-xhrj-v574"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "support@hackerone.com",
+              "url": "https://hackerone.com/reports/380873",
+              "name": "EXPLOIT,ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://www.npmjs.com/advisories/782",
+              "name": "https://www.npmjs.com/advisories/782"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-16487",
+              "name": "https://nvd.nist.gov/vuln/detail/CVE-2018-16487"
+            },
+            {
+              "source": "info",
+              "url": "https://security.netapp.com/advisory/ntap-20190919-0004/",
+              "name": "https://security.netapp.com/advisory/ntap-20190919-0004/"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad",
+              "name": "https://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2026-2950",
+          "severity": "MEDIUM",
+          "cvssv3": {
+            "baseScore": 5.3,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "3.9",
+            "impactScore": "1.4",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321"
+          ],
+          "description": "Impact:\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the _.unset and _.omit functions. The fix for (CVE-2025-13465: https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as Object.prototype, Number.prototype, and String.prototype.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\nPatches:\n\nThis issue is patched in 4.18.0.\n\nWorkarounds:\n\nNone. Upgrade to the patched version.",
+          "notes": "",
+          "references": [
+            {
+              "source": "ce714d77-add3-4f53-aff5-83d477b104bb",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg",
+              "name": "VENDOR_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh",
+              "name": "https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg",
+              "name": "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": false,
+      "fileName": "moment.js",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/node_modules/express-jwt/node_modules/moment/moment.js",
+      "md5": "f542b4c84aa5db62baf27f246f10bbf5",
+      "sha1": "eb4adec77825f18b2e6e8c3aa65f84feecafd2fd",
+      "sha256": "8b3a7278392b657e57bb371e5fadf9a07f59db50dbbc8faadec5ab16f798e4c7",
+      "packages": [
+        {
+          "id": "pkg:javascript/moment.js@2.0.0",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2017-18214",
+          "severity": "HIGH",
+          "cvssv2": {
+            "score": 5.0,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "2.9"
+          },
+          "cvssv3": {
+            "baseScore": 7.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "3.9",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-400"
+          ],
+          "description": "The moment module before 2.19.3 for Node.js is prone to a regular expression denial of service via a crafted date string, a different vulnerability than CVE-2016-4055.",
+          "notes": "",
+          "references": [
+            {
+              "source": "cve@mitre.org",
+              "url": "https://nodesecurity.io/advisories/532",
+              "name": "NOT_APPLICABLE,URL_REPURPOSED"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://nodesecurity.io/advisories/532",
+              "name": "NOT_APPLICABLE,URL_REPURPOSED"
+            },
+            {
+              "source": "info",
+              "url": "https://security.snyk.io/vuln/npm:moment:20170905",
+              "name": "https://security.snyk.io/vuln/npm:moment:20170905"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://github.com/moment/moment/issues/4163",
+              "name": "ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/moment/moment/issues/4163",
+              "name": "ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://www.tenable.com/security/tns-2019-02",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.tenable.com/security/tns-2019-02",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-18214",
+              "name": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-18214"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/moment/moment/issues/4163",
+              "name": "https://github.com/moment/moment/issues/4163"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2022-24785",
+          "severity": "HIGH",
+          "cvssv2": {
+            "score": 5.0,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "NONE",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "2.9"
+          },
+          "cvssv3": {
+            "baseScore": 7.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "3.9",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-22",
+            "CWE-27"
+          ],
+          "description": "Moment.js is a JavaScript date library for parsing, validating, manipulating, and formatting dates. A path traversal vulnerability impacts npm (server) users of Moment.js between versions 1.0.1 and 2.29.1, especially if a user-provided locale string is directly used to switch moment locale. This problem is patched in 2.29.2, and the patch can be applied to all affected versions. As a workaround, sanitize the user-provided locale name before passing it to Moment.js.",
+          "notes": "",
+          "references": [
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6QIO6YNLTK2T7SPKDS4JEL45FANLNC2Q/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20220513-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/moment/moment/commit/4211bfc8f15746be4019bba557e29a7ba83d54c5",
+              "name": "PATCH"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4",
+              "name": "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://www.tenable.com/security/tns-2022-09",
+              "name": "PATCH,RELEASE_NOTES,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.debian.org/debian-lts-announce/2023/01/msg00035.html",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ORJX2LF6KMPIHP6B2P6KZIVKMLE3LVJ5/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20241108-0002/"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://security.netapp.com/advisory/ntap-20220513-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.tenable.com/security/tns-2022-09",
+              "name": "PATCH,RELEASE_NOTES,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6QIO6YNLTK2T7SPKDS4JEL45FANLNC2Q/"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/moment/moment/commit/4211bfc8f15746be4019bba557e29a7ba83d54c5",
+              "name": "PATCH"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4",
+              "name": "VENDOR_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4",
+              "name": "VENDOR_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://lists.debian.org/debian-lts-announce/2023/01/msg00035.html",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ORJX2LF6KMPIHP6B2P6KZIVKMLE3LVJ5/"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2016-4055",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 7.8,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "COMPLETE",
+            "severity": "HIGH",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "6.9"
+          },
+          "cvssv3": {
+            "baseScore": 6.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.8",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-400"
+          ],
+          "description": "The duration function in the moment package before 2.11.2 for Node.js allows remote attackers to cause a denial of service (CPU consumption) via a long string, aka a \"regular expression Denial of Service (ReDoS).\"",
+          "notes": "",
+          "references": [
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/17ff53f7999e74fbe3cc0ceb4e1c3b00b180b7c5afec8e978837bc49%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "http://www.securityfocus.com/bid/95849",
+              "name": "THIRD_PARTY_ADVISORY,VDB_ENTRY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://lists.apache.org/thread.html/54df3aeb4239b64b50b356f0ca6f986e3c4ca5b84c515dce077c7854%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://lists.apache.org/thread.html/10f0f3aefd51444d1198c65f44ffdf2d78ca3359423dbc1c168c9731%40%3Cdev.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://lists.apache.org/thread.html/52bafac05ad174000ea465fe275fd3cc7bd5c25535a7631c0bc9bfb2%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://nodesecurity.io/advisories/55",
+              "name": "BROKEN_LINK,EXPLOIT,VENDOR_ADVISORY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://www.tenable.com/security/tns-2019-02",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.tenable.com/security/tns-2019-02",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/10f0f3aefd51444d1198c65f44ffdf2d78ca3359423dbc1c168c9731%40%3Cdev.flink.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/52bafac05ad174000ea465fe275fd3cc7bd5c25535a7631c0bc9bfb2%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://lists.apache.org/thread.html/17ff53f7999e74fbe3cc0ceb4e1c3b00b180b7c5afec8e978837bc49%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/54df3aeb4239b64b50b356f0ca6f986e3c4ca5b84c515dce077c7854%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "http://www.securityfocus.com/bid/95849",
+              "name": "THIRD_PARTY_ADVISORY,VDB_ENTRY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "http://www.openwall.com/lists/oss-security/2016/04/20/11",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/moment/moment/issues/2936",
+              "name": "https://github.com/moment/moment/issues/2936"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://nodesecurity.io/advisories/55",
+              "name": "BROKEN_LINK,EXPLOIT,VENDOR_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "http://www.openwall.com/lists/oss-security/2016/04/20/11",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            }
+          ]
+        },
+        {
+          "source": "RETIREJS",
+          "name": "Regular Expression Denial of Service (ReDoS)",
+          "unscored": "true",
+          "severity": "medium",
+          "description": "Regular Expression Denial of Service (ReDoS)",
+          "notes": "",
+          "references": [
+            {
+              "source": "info",
+              "url": "https://security.snyk.io/vuln/npm:moment:20161019",
+              "name": "https://security.snyk.io/vuln/npm:moment:20161019"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": false,
+      "fileName": "moment.min.js",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/node_modules/express-jwt/node_modules/moment/min/moment.min.js",
+      "md5": "e8cdc98d1a718ec002f0ba18f2edac0c",
+      "sha1": "84d638fef033968ba31a7e3d7d4bd37522ef102a",
+      "sha256": "e1d1c13d08a6d477e65ce03824e1eb8fc4f9252882f8c07ac1ec727e4e20e03e",
+      "packages": [
+        {
+          "id": "pkg:javascript/moment.js@2.0.0",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2017-18214",
+          "severity": "HIGH",
+          "cvssv2": {
+            "score": 5.0,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "PARTIAL",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "2.9"
+          },
+          "cvssv3": {
+            "baseScore": 7.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "3.9",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-400"
+          ],
+          "description": "The moment module before 2.19.3 for Node.js is prone to a regular expression denial of service via a crafted date string, a different vulnerability than CVE-2016-4055.",
+          "notes": "",
+          "references": [
+            {
+              "source": "cve@mitre.org",
+              "url": "https://nodesecurity.io/advisories/532",
+              "name": "NOT_APPLICABLE,URL_REPURPOSED"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://nodesecurity.io/advisories/532",
+              "name": "NOT_APPLICABLE,URL_REPURPOSED"
+            },
+            {
+              "source": "info",
+              "url": "https://security.snyk.io/vuln/npm:moment:20170905",
+              "name": "https://security.snyk.io/vuln/npm:moment:20170905"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://github.com/moment/moment/issues/4163",
+              "name": "ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/moment/moment/issues/4163",
+              "name": "ISSUE_TRACKING,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://www.tenable.com/security/tns-2019-02",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.tenable.com/security/tns-2019-02",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-18214",
+              "name": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-18214"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/moment/moment/issues/4163",
+              "name": "https://github.com/moment/moment/issues/4163"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2022-24785",
+          "severity": "HIGH",
+          "cvssv2": {
+            "score": 5.0,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "NONE",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "2.9"
+          },
+          "cvssv3": {
+            "baseScore": 7.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "HIGH",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "HIGH",
+            "exploitabilityScore": "3.9",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-22",
+            "CWE-27"
+          ],
+          "description": "Moment.js is a JavaScript date library for parsing, validating, manipulating, and formatting dates. A path traversal vulnerability impacts npm (server) users of Moment.js between versions 1.0.1 and 2.29.1, especially if a user-provided locale string is directly used to switch moment locale. This problem is patched in 2.29.2, and the patch can be applied to all affected versions. As a workaround, sanitize the user-provided locale name before passing it to Moment.js.",
+          "notes": "",
+          "references": [
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6QIO6YNLTK2T7SPKDS4JEL45FANLNC2Q/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20220513-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/moment/moment/commit/4211bfc8f15746be4019bba557e29a7ba83d54c5",
+              "name": "PATCH"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4",
+              "name": "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://www.tenable.com/security/tns-2022-09",
+              "name": "PATCH,RELEASE_NOTES,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.debian.org/debian-lts-announce/2023/01/msg00035.html",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ORJX2LF6KMPIHP6B2P6KZIVKMLE3LVJ5/"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://security.netapp.com/advisory/ntap-20241108-0002/"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://security.netapp.com/advisory/ntap-20220513-0006/",
+              "name": "THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.tenable.com/security/tns-2022-09",
+              "name": "PATCH,RELEASE_NOTES,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6QIO6YNLTK2T7SPKDS4JEL45FANLNC2Q/"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/moment/moment/commit/4211bfc8f15746be4019bba557e29a7ba83d54c5",
+              "name": "PATCH"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4",
+              "name": "VENDOR_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4",
+              "name": "VENDOR_ADVISORY"
+            },
+            {
+              "source": "security-advisories@github.com",
+              "url": "https://lists.debian.org/debian-lts-announce/2023/01/msg00035.html",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ORJX2LF6KMPIHP6B2P6KZIVKMLE3LVJ5/"
+            }
+          ]
+        },
+        {
+          "source": "NVD",
+          "name": "CVE-2016-4055",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 7.8,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "COMPLETE",
+            "severity": "HIGH",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "6.9"
+          },
+          "cvssv3": {
+            "baseScore": 6.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "NONE",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "HIGH",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "2.8",
+            "impactScore": "3.6",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-400"
+          ],
+          "description": "The duration function in the moment package before 2.11.2 for Node.js allows remote attackers to cause a denial of service (CPU consumption) via a long string, aka a \"regular expression Denial of Service (ReDoS).\"",
+          "notes": "",
+          "references": [
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/17ff53f7999e74fbe3cc0ceb4e1c3b00b180b7c5afec8e978837bc49%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "http://www.securityfocus.com/bid/95849",
+              "name": "THIRD_PARTY_ADVISORY,VDB_ENTRY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://lists.apache.org/thread.html/54df3aeb4239b64b50b356f0ca6f986e3c4ca5b84c515dce077c7854%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://lists.apache.org/thread.html/10f0f3aefd51444d1198c65f44ffdf2d78ca3359423dbc1c168c9731%40%3Cdev.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://lists.apache.org/thread.html/52bafac05ad174000ea465fe275fd3cc7bd5c25535a7631c0bc9bfb2%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://nodesecurity.io/advisories/55",
+              "name": "BROKEN_LINK,EXPLOIT,VENDOR_ADVISORY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://www.tenable.com/security/tns-2019-02",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://www.tenable.com/security/tns-2019-02",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/10f0f3aefd51444d1198c65f44ffdf2d78ca3359423dbc1c168c9731%40%3Cdev.flink.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/52bafac05ad174000ea465fe275fd3cc7bd5c25535a7631c0bc9bfb2%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "https://lists.apache.org/thread.html/17ff53f7999e74fbe3cc0ceb4e1c3b00b180b7c5afec8e978837bc49%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://lists.apache.org/thread.html/54df3aeb4239b64b50b356f0ca6f986e3c4ca5b84c515dce077c7854%40%3Cuser.flink.apache.org%3E"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "http://www.securityfocus.com/bid/95849",
+              "name": "THIRD_PARTY_ADVISORY,VDB_ENTRY"
+            },
+            {
+              "source": "cve@mitre.org",
+              "url": "http://www.openwall.com/lists/oss-security/2016/04/20/11",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html",
+              "name": "PATCH,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "info",
+              "url": "https://github.com/moment/moment/issues/2936",
+              "name": "https://github.com/moment/moment/issues/2936"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://nodesecurity.io/advisories/55",
+              "name": "BROKEN_LINK,EXPLOIT,VENDOR_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "http://www.openwall.com/lists/oss-security/2016/04/20/11",
+              "name": "MAILING_LIST,THIRD_PARTY_ADVISORY"
+            }
+          ]
+        },
+        {
+          "source": "RETIREJS",
+          "name": "Regular Expression Denial of Service (ReDoS)",
+          "unscored": "true",
+          "severity": "medium",
+          "description": "Regular Expression Denial of Service (ReDoS)",
+          "notes": "",
+          "references": [
+            {
+              "source": "info",
+              "url": "https://security.snyk.io/vuln/npm:moment:20161019",
+              "name": "https://security.snyk.io/vuln/npm:moment:20161019"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "isVirtual": true,
+      "fileName": "notevil:1.3.3",
+      "filePath": "/home/sighup/vulnscout-test/juice-shop/package.json?/notevil:^1.3.3",
+      "description": "Evalulate javascript like the built-in eval() method but safely",
+      "license": "MIT",
+      "projectReferences": [
+        "juice-shop:20.1.1"
+      ],
+      "packages": [
+        {
+          "id": "pkg:npm/notevil@1.3.3",
+          "confidence": "HIGHEST"
+        }
+      ],
+      "vulnerabilities": [
+        {
+          "source": "NVD",
+          "name": "CVE-2021-23771",
+          "severity": "MEDIUM",
+          "cvssv2": {
+            "score": 6.4,
+            "accessVector": "NETWORK",
+            "accessComplexity": "LOW",
+            "authenticationr": "NONE",
+            "confidentialityImpact": "PARTIAL",
+            "integrityImpact": "PARTIAL",
+            "availabilityImpact": "NONE",
+            "severity": "MEDIUM",
+            "version": "2.0",
+            "exploitabilityScore": "10.0",
+            "impactScore": "4.9"
+          },
+          "cvssv3": {
+            "baseScore": 6.5,
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "NONE",
+            "baseSeverity": "MEDIUM",
+            "exploitabilityScore": "3.9",
+            "impactScore": "2.5",
+            "version": "3.1"
+          },
+          "cwes": [
+            "CWE-1321"
+          ],
+          "description": "This affects all versions of package notevil; all versions of package argencoders-notevil. It is vulnerable to Sandbox Escape leading to Prototype pollution. The package fails to restrict access to the main context, allowing an attacker to add or modify an object's prototype. **Note:** This vulnerability derives from an incomplete fix in [SNYK-JS-NOTEVIL-608878](https://security.snyk.io/vuln/SNYK-JS-NOTEVIL-608878).",
+          "notes": "",
+          "references": [
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-ARGENCODERSNOTEVIL-2388587",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "af854a3a-2127-422b-91ae-364da2661108",
+              "url": "https://snyk.io/vuln/SNYK-JS-NOTEVIL-2385946",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-ARGENCODERSNOTEVIL-2388587",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            },
+            {
+              "source": "report@snyk.io",
+              "url": "https://snyk.io/vuln/SNYK-JS-NOTEVIL-2385946",
+              "name": "EXPLOIT,THIRD_PARTY_ADVISORY"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
