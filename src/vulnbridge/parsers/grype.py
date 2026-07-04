@@ -1,4 +1,5 @@
-"""Parser for `grype -o json` reports.
+"""
+Reads a `grype -o json` report and turns each match into a Finding.
 
 Shape of the input, showing only the fields this parser reads:
 
@@ -26,11 +27,6 @@ Shape of the input, showing only the fields this parser reads:
         }
       ]
     }
-
-When grype matches through a distro's security database (Alpine, Debian...),
-the distro record in "vulnerability" often has no description and no urls.
-The linked NVD record then sits in "relatedVulnerabilities", so title and
-references fall back to the first entry there.
 """
 from ..schema import Finding
 
@@ -45,6 +41,8 @@ def parse(report: dict) -> list[Finding]:
         related = match.get("relatedVulnerabilities") or [{}]
         artifact = match.get("artifact") or {}
         fix_versions = (vuln.get("fix") or {}).get("versions") or []
+        # Distro-database matches (Alpine, Debian...) often have no description
+        # or urls of their own, so fall back to the linked NVD record.
         description = vuln.get("description") or related[0].get("description") or ""
         findings.append(Finding(
             vuln_id=vuln.get("id", ""),

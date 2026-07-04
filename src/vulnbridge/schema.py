@@ -1,4 +1,8 @@
-"""The unified finding schema: every scanner's output maps into this."""
+"""
+Every scanner has its own JSON format for reporting a vulnerability.
+Before we can compare or merge results from different tools, we need
+everything in the same shape. That shape is the Finding class below.
+"""
 from dataclasses import dataclass, field, asdict
 
 SEVERITIES = ("CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN")

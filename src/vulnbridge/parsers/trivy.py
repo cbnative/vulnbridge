@@ -1,4 +1,7 @@
-"""Parser for `trivy --format json` reports (image, fs and repo scans).
+"""
+Reads a `trivy --format json` report and turns each vulnerability it
+found into a Finding. Trivy uses the same report shape whether it
+scanned a container image, a filesystem, or a git repo.
 
 Shape of the input, showing only the fields this parser reads:
 

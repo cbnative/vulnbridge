@@ -1,4 +1,6 @@
-"""Parser for `dependency-check --format JSON` reports.
+"""
+Reads a `dependency-check --format JSON` report and turns each
+vulnerability it found into a Finding.
 
 Shape of the input, showing only the fields this parser reads:
 
@@ -24,14 +26,11 @@ Shape of the input, showing only the fields this parser reads:
       ]
     }
 
-The package id is a purl: `pkg:<ecosystem>/<name>@<version>`. Splitting on
-the last "@" separates name from version, which also keeps scoped npm names
-like `pkg:npm/%40cyclonedx/cyclonedx-npm@2.0.0` intact (the %40 is decoded).
-
-Not every finding is a CVE: the bundled RetireJS analyzer reports entries
-with a descriptive name ("Regular Expression Denial of Service (ReDoS)"),
-a lowercase severity and no CVSS block. The Finding schema normalizes the
-severity and leaves cvss as None.
+Not every finding here is a CVE. The RetireJS analyzer that ships with
+dependency-check reports things like "Regular Expression Denial of Service
+(ReDoS)" instead, with a lowercase severity and no CVSS block at all. The
+Finding schema takes care of the severity casing for us, and cvss just ends
+up None.
 """
 from urllib.parse import unquote
 

@@ -1,4 +1,9 @@
-"""CLI: vulnscout normalize --tool trivy report.json -o findings.json"""
+"""
+Command line entry point.
+
+Basic usage:
+    vulnbridge normalize --tool trivy report.json -o findings.json
+"""
 import argparse
 import json
 import sys
@@ -7,7 +12,7 @@ from .parsers import PARSERS
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(prog="vulnscout")
+    parser = argparse.ArgumentParser(prog="vulnbridge")
     sub = parser.add_subparsers(dest="command", required=True)
 
     norm = sub.add_parser("normalize", help="normalize a scanner report")

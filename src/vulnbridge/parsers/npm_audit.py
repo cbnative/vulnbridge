@@ -1,4 +1,7 @@
-"""Parser for `npm audit --json` reports (auditReportVersion 2).
+"""
+Reads an `npm audit --json` report and turns each advisory into a
+Finding. Written against auditReportVersion 2, the format current npm
+versions produce.
 
 Shape of the input, showing only the fields this parser reads:
 
@@ -21,21 +24,16 @@ Shape of the input, showing only the fields this parser reads:
           "fixAvailable": {"version": "0.19.1"}    -> fixed_version
         },
         "cacache": {
-          "via": ["tar"],   <- bare string: no finding produced, see below
+          "via": ["tar"],   <- bare string, we skip these (see parse() below)
           ...
         }
       }
     }
 
-An entry in "via" is either an advisory object (a real finding) or a bare
-string naming another package in this same report. The string form means
-"cacache is vulnerable because it depends on tar": tar's own entry carries
-the actual advisory, so producing a finding for the string too would count
-the same advisory twice.
-
-npm audit does not report the installed version of the affected package, so
-installed_version stays empty. "fixAvailable" can also be `true`/`false`
-instead of an object, in which case there is no version to extract.
+Also worth knowing: npm audit never tells you the installed version of the
+package, so we leave installed_version empty. And "fixAvailable" isn't always
+an object, it can just be true or false, in which case there's no version to
+grab.
 """
 from ..schema import Finding
 
