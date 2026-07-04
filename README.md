@@ -2,6 +2,8 @@
 
 A small Python tool that takes the JSON reports of different vulnerability scanners and converts them into one common format.
 
+📝 Full walkthrough: [VulnManager: Unifying Security Scanners with NVD Normalization](https://cbnative.com/posts/vulnmanager-unified-scanner-normalization).
+
 ## The problem, concretely
 
 Scan the same container image with two scanners and you get two files that describe the same vulnerability in completely different shapes.
@@ -46,8 +48,6 @@ That translation is all vulnbridge does. Every finding, from any supported tool,
 ```
 
 Once everything has the same fields you can count, sort, diff and deduplicate findings across tools, which is the starting point for any real vulnerability triage.
-
-📝 Full walkthrough: [VulnManager: Unifying Security Scanners with NVD Normalization](https://cbnative.com/posts/vulnmanager-unified-scanner-normalization).
 
 > **Clean-room notice**: this project re-implements, from scratch and in the open, the concept I described in [VulnManager: Unifying Security Scanners with NVD Normalization](https://cbnative.com/posts/vulnmanager-unified-scanner-normalization). It contains no code or data from any employer, past or present.
 
