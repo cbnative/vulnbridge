@@ -1,4 +1,4 @@
-# Vulnscout
+# Vulnbridge
 
 A small Python tool that takes the JSON reports of different vulnerability scanners and converts them into one common format.
 
