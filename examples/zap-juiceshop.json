@@ -1,0 +1,32 @@
+{
+  "@programName": "ZAP",
+  "@version": "2.17.0",
+  "site": [
+    {
+      "@name": "https://juice-shop.herokuapp.com/",
+      "@host": "juice-shop.herokuapp.com",
+      "@port": "443",
+      "@ssl": "true",
+      "alerts": [
+        {
+          "pluginid": "10038",
+          "name": "Content Security Policy (CSP) Header Not Set",
+          "riskcode": "2",
+          "riskdesc": "Medium (High)"
+        },
+        {
+          "pluginid": "90004",
+          "name": "Cross-Origin-Embedder-Policy Header Missing or Invalid",
+          "riskcode": "1",
+          "riskdesc": "Low (Medium)"
+        },
+        {
+          "pluginid": "10109",
+          "name": "Modern Web Application",
+          "riskcode": "0",
+          "riskdesc": "Informational (Medium)"
+        }
+      ]
+    }
+  ]
+}

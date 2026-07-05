@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "check_id": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+      "path": "juice-shop/.github/workflows/ci.yml",
+      "start": { "line": 188 },
+      "end": { "line": 188 },
+      "extra": {
+        "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks, as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead.",
+        "severity": "WARNING"
+      }
+    },
+    {
+      "check_id": "yaml.github-actions.security.gha-curl-pipe-shell.gha-curl-pipe-shell",
+      "path": "juice-shop/.github/workflows/ci.yml",
+      "start": { "line": 358 },
+      "end": { "line": 358 },
+      "extra": {
+        "message": "A `run:` step pipes the output of `curl` or `wget` directly into a shell interpreter. If the remote server is compromised or the URL is hijacked, an attacker can execute arbitrary code in your CI runner.",
+        "severity": "ERROR"
+      }
+    },
+    {
+      "check_id": "package_managers.npm.npm-missing-minimum-release-age.npm-missing-minimum-release-age",
+      "path": "juice-shop/.npmrc",
+      "start": { "line": 1 },
+      "end": { "line": 1 },
+      "extra": {
+        "message": "This .npmrc does not set a minimum release age or sets it too low. Newly published packages can be malicious or unstable. Add `min-release-age = 7` to wait before resolving newly published package versions.",
+        "severity": "MEDIUM"
+      }
+    },
+    {
+      "check_id": "javascript.audit.detect-replaceall-sanitization.detect-replaceall-sanitization",
+      "path": "juice-shop/data/static/codefixes/restfulXssChallenge_2.ts",
+      "start": { "line": 46 },
+      "end": { "line": 46 },
+      "extra": {
+        "message": "Detected a call to `replaceAll()` in an attempt to HTML escape a string. Manually sanitizing input through a manually built list can be circumvented, use a well known sanitization library such as `sanitize-html` or `DOMPurify` instead.",
+        "severity": "INFO"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "host": "juice-shop.herokuapp.com",
+  "ip": "54.163.201.111",
+  "port": "443",
+  "banner": "cloudflare",
+  "vulnerabilities": [
+    {
+      "id": "999986",
+      "method": "GET",
+      "url": "/",
+      "msg": "Retrieved x-powered-by header: Express"
+    },
+    {
+      "id": "999982",
+      "method": "GET",
+      "url": "/",
+      "msg": "The X-Content-Type-Options header is not set, this could allow the user agent to render the content differently from the way intended"
+    },
+    {
+      "id": "999985",
+      "method": "GET",
+      "url": "/robots.txt",
+      "msg": "robots.txt was found, this could contain entry points that are not linked from anywhere else on the site"
+    }
+  ]
+}

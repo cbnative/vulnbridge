@@ -1,0 +1,2 @@
+/var/app/uploads/invoice.pdf.exe: Win.Trojan.Agent-6812345 FOUND
+/var/app/uploads/profile-pic.php: PHP.Webshell.Generic-9988771 FOUND

@@ -100,35 +100,63 @@ You should see the start of a JSON list of normalized findings:
     "cvss": 7.5,
 ```
 
-The [`examples/`](examples/) directory has one real captured report per supported tool, documented in [`examples/README.md`](examples/README.md), so you can try all four parsers the same way:
+The [`examples/`](examples/) directory has one real captured (or, where noted, hand-built) report per supported tool, documented in [`examples/README.md`](examples/README.md). Try any of them the same way:
 
 ```bash
-vulnbridge normalize --tool trivy examples/trivy-alpine.json
 vulnbridge normalize --tool grype examples/grype-alpine.json
-vulnbridge normalize --tool npm-audit examples/npm-audit-juiceshop.json
-vulnbridge normalize --tool dependency-check examples/dependency-check-juiceshop.json
+vulnbridge normalize --tool gitleaks examples/gitleaks-juiceshop.json
 ```
 
 **5. Normalize your own scans**
 
-Run any supported scanner with JSON output, then hand the file to vulnbridge:
+Run any supported scanner, then hand its report to vulnbridge:
 
 ```bash
 trivy image --format json --output trivy-report.json alpine:3.18
 vulnbridge normalize --tool trivy trivy-report.json -o findings.json
 ```
 
-The same command works with `--tool grype` (a `grype -o json` report), `--tool npm-audit` (`npm audit --json`), or `--tool dependency-check` (`dependency-check --format JSON`). The output is a JSON list of findings in the format above, written to `-o` or to stdout.
+Nine tools are supported: `trivy`, `grype`, `npm-audit`, `dependency-check` (dependency / image scanners), `gitleaks` (secrets), `semgrep` (SAST), `zap` and `nikto` (DAST), `clamav` (malware). The output is a JSON list of findings in the format above, written to `-o` or to stdout.
 
 When you come back later in a new terminal, activate the environment again (`source .venv/bin/activate`) and the `vulnbridge` command is back.
 
+## Merging reports from several tools
+
+A single project usually runs more than one scanner. `merge` normalizes each report, drops duplicates (same CVE or rule hitting the same package/location), sorts by severity, and writes one combined `findings.json`:
+
+```bash
+vulnbridge merge trivy:trivy.json grype:grype.json gitleaks:gitleaks.json -o findings.json
+```
+
+If your reports already live in one folder under their scanner's usual output filename (`trivy.json`, `grype.json`, `gitleaks.json`, `semgrep.json`, `zap.json`, `nikto.json`, `clamav.txt`, `dependency-check-report.json`), skip naming each one:
+
+```bash
+vulnbridge merge --dir security-reports -o findings.json
+```
+
+Missing files are just skipped, so it works however many scanners you actually ran.
+
+## Dashboard
+
+`merge --dashboard dashboard.html` writes a second file alongside `findings.json`: one self-contained HTML page, no JavaScript, no charting library, just severity counts as colored cards and a sortable-by-eye table underneath.
+
+```bash
+vulnbridge merge --dir security-reports -o findings.json --dashboard dashboard.html
+```
+
+Already have a `findings.json` (including one produced by the [jenkins-security-pipeline](https://github.com/cbnative/jenkins-security-pipeline) shared library)? Render it directly:
+
+```bash
+vulnbridge dashboard findings.json -o dashboard.html
+```
+
 ## What is in this repo
 
-`schema.py` defines the `Finding` dataclass and `dedupe_key()`, which flags two findings as the same vulnerability when they share a CVE and a package.
+`schema.py` defines the `Finding` dataclass and `dedupe_key()`, which flags two findings as the same vulnerability when they share a CVE and a package, or the same rule and location for findings that have no package (a leaked secret, a SAST hit).
 
-Each scanner gets its own parser file: `parsers/trivy.py`, `parsers/grype.py`, `parsers/npm_audit.py`, `parsers/dependency_check.py`. All four do the same job, read that tool's JSON, return a list of `Finding` objects, and `parsers/__init__.py` just maps the `--tool` name you pass on the CLI to the right one. `cli.py` reads the report file, calls that parser, and prints or writes the result. To add a new scanner, write one more parser file and add it to that registry.
+Each scanner gets its own parser file under `parsers/`: `trivy.py`, `grype.py`, `npm_audit.py`, `dependency_check.py`, `gitleaks.py`, `semgrep.py`, `zap.py`, `nikto.py`, `clamav.py`. All of them do the same job, read that tool's report, return a list of `Finding` objects, and `parsers/__init__.py` maps the `--tool` name to the right one. `dashboard.py` renders the colored HTML summary. `cli.py` wires the three subcommands (`normalize`, `merge`, `dashboard`) to all of that. To add a new scanner, write one more parser file and add it to the registry.
 
-`examples/` has one real captured report per tool, see `examples/README.md` for exactly how each was produced. That's what the Quick start commands above run against.
+`examples/` has one real captured report per tool where a scanner run was available, see `examples/README.md` for exactly how each was produced. That's what the commands above run against.
 
 ## License
 

@@ -10,12 +10,13 @@ SEVERITIES = ("CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN")
 
 @dataclass
 class Finding:
-    vuln_id: str                 # CVE-..., GHSA-..., or tool-native id
+    vuln_id: str                 # CVE-..., GHSA-..., or tool-native rule/id
     source_tool: str             # trivy | grype | dependency-check | ...
     target: str                  # image ref, repo path, host...
-    package: str
+    package: str = ""            # dependency name, empty for non-package findings
     installed_version: str = ""
     fixed_version: str = ""
+    location: str = ""           # file:line, for findings with no package (secrets, SAST, malware)
     severity: str = "UNKNOWN"    # normalized, one of SEVERITIES
     cvss: float | None = None
     title: str = ""
@@ -30,5 +31,10 @@ class Finding:
 
 
 def dedupe_key(f: Finding) -> tuple[str, str]:
-    """Two tools reporting the same CVE on the same package = one finding."""
-    return (f.vuln_id, f.package)
+    """Two tools reporting the same CVE on the same package = one finding.
+
+    Findings with no package (a secret, a SAST hit, a malware match) fall
+    back to location, so two different findings sharing the same rule id
+    don't collide just because both have an empty package.
+    """
+    return (f.vuln_id, f.package or f.location)
