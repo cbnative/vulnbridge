@@ -2,7 +2,7 @@
 
 A small Python tool that takes the JSON reports of different vulnerability scanners and converts them into one common format.
 
-📝 Full walkthrough: [VulnManager: Unifying Security Scanners with NVD Normalization](https://cbnative.com/posts/vulnmanager-unified-scanner-normalization).
+📝 Related post: [VulnManager: Unifying Security Scanners with NVD Normalization](https://cbnative.com/posts/vulnmanager-unified-scanner-normalization).
 
 ## The problem, concretely
 
